@@ -1,16 +1,26 @@
-# This is a sample Python script.
+import  random
+def play():
+    user = input(" What's your choice? 'r' for rock, 'p' for paper, 's' for scissors\n")
+    computer = random.choice(['r', 'p', 's'])
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    if  user == computer:
+        return 'It\'s a tie'
+
+    if  is_win(user, computer):
+        return 'You Won!'
+
+    if not is_win(user, computer):
+        print("You Lost!!\n"
+              "Wanna play again?\n")
+        play_again = input("'y' for yes or 'n' for no")
+        if play_again == 'y':
+            play()
+        return 'Bye!!'
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def  is_win(player, opponent):
+    if (player == 'r' and opponent == 's') or (player == 's' and opponent == 'p')  \
+        or (player == 'p' and opponent == 'r'):
+        return True
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(play())
